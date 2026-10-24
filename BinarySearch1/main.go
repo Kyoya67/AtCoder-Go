@@ -30,7 +30,7 @@ func binarySearch(a []int, x int, left int, right int) int {
 
 	if x < a[mid] {
 		return binarySearch(a, x, left, mid-1)
+	} else {
+		return binarySearch(a, x, mid+1, right)
 	}
-
-	return binarySearch(a, x, mid+1, right)
 }
