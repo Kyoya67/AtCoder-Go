@@ -8,27 +8,29 @@ func main() {
 	var n, x int
 	fmt.Scan(&n, &x)
 
-	fmt.Println(n, x)
-
 	a := make([]int, n)
 
 	for i := 0; i < n; i++ {
 		fmt.Scan(&a[i])
 	}
 
-	fmt.Println(binarySearch(a, x))
+	fmt.Println(binarySearch(a, x, 0, len(a)-1) + 1)
 }
 
-func binarySearch(a []int, x int) int {
-	mid := len(a) / 2
+func binarySearch(a []int, x int, left int, right int) int {
+	if left > right {
+		return -1
+	}
+
+	mid := (left + right) / 2
 
 	if x == a[mid] {
 		return mid
-	} else if x < a[mid] {
-		binarySearch(a[:mid], x)
-	} else {
-		binarySearch(a[mid:], x)
 	}
 
-	return -1
+	if x < a[mid] {
+		return binarySearch(a, x, left, mid-1)
+	}
+
+	return binarySearch(a, x, mid+1, right)
 }
