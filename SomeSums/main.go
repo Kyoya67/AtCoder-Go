@@ -20,10 +20,10 @@ func main() {
 			x /= 10
 		}
 
-		if A <= digitSum && digitSum <= B {
+		if digitSum >= A && B >= digitSum {
 			ans += i
 		}
 	}
 
-	fmt.Printf("%d\n", ans)
+	fmt.Println(ans)
 }
