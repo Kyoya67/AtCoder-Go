@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 )
 
 func main() {
@@ -18,6 +19,15 @@ func main() {
 
 	mergeSort(nums)
 	fmt.Printf("mergeSort: %v\n", nums)
+
+	quickSort(nums)
+	fmt.Printf("quickSort: %v\n", nums)
+
+	heapSort(nums)
+	fmt.Printf("heapSort: %v\n", nums)
+
+	bogosort(nums)
+	fmt.Printf("bogosort: %v\n", nums)
 }
 
 func bubbleSort(nums []int) {
@@ -99,5 +109,78 @@ func mergeSort(nums []int) {
 		nums[k] = right[j]
 		j++
 		k++
+	}
+}
+
+func quickSort(nums []int) {
+	if len(nums) <= 1 {
+		return
+	}
+	pivot := nums[len(nums)/2]
+	left := []int{}
+	right := []int{}
+	mid := []int{}
+	for _, v := range nums {
+		if v < pivot {
+			left = append(left, v)
+		} else if v > pivot {
+			right = append(right, v)
+		} else {
+			mid = append(mid, v)
+		}
+	}
+	quickSort(left)
+	quickSort(right)
+	copy(nums, append(append(left, mid...), right...))
+}
+
+func heapSort(nums []int) {
+	n := len(nums)
+	// Build max heap
+	for i := n/2 - 1; i >= 0; i-- {
+		heapify(nums, n, i)
+	}
+	// Extract elements from heap
+	for i := n - 1; i > 0; i-- {
+		nums[0], nums[i] = nums[i], nums[0]
+		heapify(nums, i, 0)
+	}
+}
+
+func heapify(nums []int, n, i int) {
+	largest := i
+	left := 2*i + 1
+	right := 2*i + 2
+	if left < n && nums[left] > nums[largest] {
+		largest = left
+	}
+	if right < n && nums[right] > nums[largest] {
+		largest = right
+	}
+	if largest != i {
+		nums[i], nums[largest] = nums[largest], nums[i]
+		heapify(nums, n, largest)
+	}
+}
+
+func bogosort(nums []int) {
+	for !isSorted(nums) {
+		shuffle(nums)
+	}
+}
+
+func isSorted(nums []int) bool {
+	for i := 1; i < len(nums); i++ {
+		if nums[i-1] > nums[i] {
+			return false
+		}
+	}
+	return true
+}
+
+func shuffle(nums []int) {
+	for i := range nums {
+		j := rand.Intn(i + 1)
+		nums[i], nums[j] = nums[j], nums[i]
 	}
 }
