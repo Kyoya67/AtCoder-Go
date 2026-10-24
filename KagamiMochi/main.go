@@ -2,18 +2,17 @@ package main
 
 import (
 	"fmt"
-	"os"
 )
 
 func main() {
 	var n int
-	fmt.Fscan(os.Stdin, &n)
+	fmt.Scan(&n)
 
 	seen := make(map[int]bool)
 
 	for i := 0; i < n; i++ {
 		var f int
-		fmt.Fscan(os.Stdin, &f)
+		fmt.Scan(&f)
 
 		if seen[f] == true {
 			continue
@@ -28,7 +27,7 @@ func main() {
 
 	// for i := 0; i < n; i++ {
 	// 	var f int
-	// 	fmt.Fscan(os.Stdin, &f)
+	// 	fmt.Scan(&f)
 	// 	for i := 0; i < len(nums); i++ {
 	// 		if f == nums[i] {
 	// 			goto skip

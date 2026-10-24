@@ -2,21 +2,20 @@ package main
 
 import (
 	"fmt"
-	"os"
 )
 
 func main() {
 	var n, k int
-	fmt.Fscan(os.Stdin, &n, &k)
+	fmt.Scan(&n, &k)
 
 	p := make([]int, n)
 	q := make([]int, n)
 
 	for i := 0; i < n; i++ {
-		fmt.Fscan(os.Stdin, &p[i])
+		fmt.Scan(&p[i])
 	}
 	for i := 0; i < n; i++ {
-		fmt.Fscan(os.Stdin, &q[i])
+		fmt.Scan(&q[i])
 	}
 
 	for i := 0; i < n; i++ {

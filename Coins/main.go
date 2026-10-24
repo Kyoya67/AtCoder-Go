@@ -2,12 +2,11 @@ package main
 
 import (
 	"fmt"
-	"os"
 )
 
 func main() {
 	var A, B, C, X int
-	fmt.Fscan(os.Stdin, &A, &B, &C, &X)
+	fmt.Scan(&A, &B, &C, &X)
 
 	count := 0
 

@@ -2,18 +2,17 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"sort"
 )
 
 func main() {
 	var n int
-	fmt.Fscan(os.Stdin, &n)
+	fmt.Scan(&n)
 
 	nums := make([]int, n)
 
 	for i := 0; i < n; i++ {
-		fmt.Fscan(os.Stdin, &nums[i])
+		fmt.Scan(&nums[i])
 	}
 
 	sort.Sort(sort.Reverse(sort.IntSlice(nums)))
