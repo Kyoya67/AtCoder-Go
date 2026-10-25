@@ -29,7 +29,7 @@ func binarySearch(k int64, a []int64) int64 {
 	left := int64(0)
 	right := int64(1)
 
-	for countPrint(right, a) >= k {
+	for countPrint(right, a) < k {
 		right *= 2
 	}
 
