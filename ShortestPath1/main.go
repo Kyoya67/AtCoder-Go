@@ -26,13 +26,9 @@ func main() {
 
 	bfs(0)
 
-	for i, d := range dist {
-		if i > 0 {
-			fmt.Print(" ")
-		}
-		fmt.Print(d)
+	for _, d := range dist {
+		fmt.Println(d)
 	}
-	fmt.Println()
 }
 
 func bfs(v int) {
