@@ -12,11 +12,10 @@ func main() {
 		fmt.Scan(&a[i])
 	}
 
-	// fmt.Println(simulate(k, a))
 	fmt.Println(binarySearch(k, a))
 }
 
-func countPrinted(t int64, a []int64) int64 {
+func countPrint(t int64, a []int64) int64 {
 	var count int64
 
 	for _, v := range a {
@@ -30,14 +29,14 @@ func binarySearch(k int64, a []int64) int64 {
 	left := int64(0)
 	right := int64(1)
 
-	for countPrinted(right, a) < k {
+	for countPrint(right, a) >= k {
 		right *= 2
 	}
 
 	for right-left > 1 {
 		mid := (left + right) / 2
 
-		if countPrinted(mid, a) >= k {
+		if countPrint(mid, a) >= k {
 			right = mid
 		} else {
 			left = mid
@@ -45,19 +44,4 @@ func binarySearch(k int64, a []int64) int64 {
 	}
 
 	return right
-}
-
-func simulate(k int64, a []int64) int64 {
-	var sum int64
-
-	for sec := int64(1); ; sec++ {
-		for _, v := range a {
-			if sec%v == 0 {
-				sum++
-				if sum == k {
-					return sec
-				}
-			}
-		}
-	}
 }
