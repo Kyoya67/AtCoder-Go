@@ -21,6 +21,7 @@ func main() {
 			m[name] = score
 		case 2:
 			var name string
+
 			fmt.Scan(&name)
 			fmt.Println(m[name])
 		}
