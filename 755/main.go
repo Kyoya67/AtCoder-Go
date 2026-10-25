@@ -27,21 +27,21 @@ func dfs(x int) {
 }
 
 func is753(x int) bool {
-	var contain = map[int]bool{3: false, 5: false, 7: false}
+	var hasDigit = map[int]bool{3: false, 5: false, 7: false}
 
 	for x > 0 {
 		switch x % 10 {
 		case 3:
-			contain[3] = true
+			hasDigit[3] = true
 		case 5:
-			contain[5] = true
+			hasDigit[5] = true
 		case 7:
-			contain[7] = true
+			hasDigit[7] = true
 		default:
 			return false
 		}
 		x /= 10
 	}
 
-	return contain[3] && contain[5] && contain[7]
+	return hasDigit[3] && hasDigit[5] && hasDigit[7]
 }
