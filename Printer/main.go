@@ -3,28 +3,61 @@ package main
 import "fmt"
 
 func main() {
-	var n, k int
+	var n int
+	var k int64
 	fmt.Scan(&n, &k)
 
-	a := make([]int, n)
+	a := make([]int64, n)
 	for i := 0; i < n; i++ {
 		fmt.Scan(&a[i])
 	}
 
-	sum := 0
-	var answer int
+	// fmt.Println(simulate(k, a))
+	fmt.Println(binarySearch(k, a))
+}
 
-	for sec := 1; ; sec++ {
-		for i := 0; i < n; i++ {
-			if sec%a[i] == 0 {
+func countPrinted(t int64, a []int64) int64 {
+	var count int64
+
+	for _, v := range a {
+		count += t / v
+	}
+
+	return count
+}
+
+func binarySearch(k int64, a []int64) int64 {
+	left := int64(0)
+	right := int64(1)
+
+	for countPrinted(right, a) < k {
+		right *= 2
+	}
+
+	for right-left > 1 {
+		mid := (left + right) / 2
+
+		if countPrinted(mid, a) >= k {
+			right = mid
+		} else {
+			left = mid
+		}
+	}
+
+	return right
+}
+
+func simulate(k int64, a []int64) int64 {
+	var sum int64
+
+	for sec := int64(1); ; sec++ {
+		for _, v := range a {
+			if sec%v == 0 {
 				sum++
 				if sum == k {
-					answer = sec
-					goto skip
+					return sec
 				}
 			}
 		}
 	}
-skip:
-	fmt.Println(answer)
 }
