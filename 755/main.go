@@ -21,6 +21,7 @@ func dfs(x int) {
 	if is753(x) {
 		count++
 	}
+
 	dfs(x*10 + 3)
 	dfs(x*10 + 5)
 	dfs(x*10 + 7)
