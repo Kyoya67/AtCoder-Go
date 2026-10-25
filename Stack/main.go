@@ -2,30 +2,30 @@ package main
 
 import "fmt"
 
-type Books []string
+type Stack []string
 
-func (b *Books) Push(value string) {
-	*b = append(*b, value)
+func (s *Stack) Push(value string) {
+	*s = append(*s, value)
 }
 
-func (b *Books) Pop() {
-	*b = (*b)[:len(*b)-1]
+func (s *Stack) Pop() {
+	*s = (*s)[:len(*s)-1]
 }
 
-func (b *Books) Top() string {
-	return (*b)[len(*b)-1]
+func (s *Stack) Top() string {
+	return (*s)[len(*s)-1]
 }
 
-func (b *Books) isEmpty() bool {
-	return len(*b) == 0
+func (s *Stack) isEmpty() bool {
+	return len(*s) == 0
 }
 
 func main() {
-	var b Books
-	var q int
+	var s Stack
+	var n int
 
-	fmt.Scan(&q)
-	for i := 0; i < q; i++ {
+	fmt.Scan(&n)
+	for i := 0; i < n; i++ {
 		var order int
 		fmt.Scan(&order)
 
@@ -33,14 +33,14 @@ func main() {
 		case 1:
 			var title string
 			fmt.Scan(&title)
-			b.Push(title)
+			s.Push(title)
 		case 2:
-			if !b.isEmpty() {
-				fmt.Println(b.Top())
+			if !s.isEmpty() {
+				fmt.Println(s.Top())
 			}
 		case 3:
-			if !b.isEmpty() {
-				b.Pop()
+			if !s.isEmpty() {
+				s.Pop()
 			}
 		}
 
