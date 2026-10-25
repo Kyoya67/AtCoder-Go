@@ -8,26 +8,26 @@ import (
 func main() {
 	nums := []int{5, 3, 8, 1, 2}
 
-	bubbleSort(nums)
-	fmt.Printf("bubbleSort: %v\n", nums)
+	// bubbleSort(nums)
+	// fmt.Printf("bubbleSort: %v\n", nums)
 
-	selectionSort(nums)
-	fmt.Printf("selectionSort: %v\n", nums)
+	// selectionSort(nums)
+	// fmt.Printf("selectionSort: %v\n", nums)
 
-	insertionSort(nums)
-	fmt.Printf("insertionSort: %v\n", nums)
+	// insertionSort(nums)
+	// fmt.Printf("insertionSort: %v\n", nums)
 
 	mergeSort(nums)
 	fmt.Printf("mergeSort: %v\n", nums)
 
-	quickSort(nums)
-	fmt.Printf("quickSort: %v\n", nums)
+	// quickSort(nums)
+	// fmt.Printf("quickSort: %v\n", nums)
 
-	heapSort(nums)
-	fmt.Printf("heapSort: %v\n", nums)
+	// heapSort(nums)
+	// fmt.Printf("heapSort: %v\n", nums)
 
-	bogosort(nums)
-	fmt.Printf("bogosort: %v\n", nums)
+	// bogosort(nums)
+	// fmt.Printf("bogosort: %v\n", nums)
 }
 
 func bubbleSort(nums []int) {
@@ -83,8 +83,12 @@ func mergeSort(nums []int) {
 	mid := len(nums) / 2
 	left := make([]int, mid)
 	right := make([]int, len(nums)-mid)
+
 	copy(left, nums[:mid])
 	copy(right, nums[mid:])
+
+	// left := nums[:mid]
+	// right := nums[mid:]
 
 	mergeSort(left)
 	mergeSort(right)
@@ -110,6 +114,7 @@ func mergeSort(nums []int) {
 		j++
 		k++
 	}
+
 }
 
 func quickSort(nums []int) {
