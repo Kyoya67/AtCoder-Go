@@ -27,11 +27,12 @@ func intervalScheduling(movies []time) int {
 
 	mergeSort(movies)
 
-	i, count, lastEnd := 0, 0, 0
-	for movies[i].start >= lastEnd {
-		lastEnd = movies[i].end
-		count++
-		i++
+	count, lastEnd := 0, 0
+	for i := 0; i < len(movies); i++ {
+		if movies[i].start >= lastEnd {
+			lastEnd = movies[i].end
+			count++
+		}
 	}
 
 	return count
